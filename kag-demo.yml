@@ -1,0 +1,218 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: kag-demo
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: http-request
+      id: 1747817496368-source-1747819013426-target
+      source: '1747817496368'
+      sourceHandle: source
+      target: '1747819013426'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1747819013426-source-1747822378729-target
+      source: '1747819013426'
+      sourceHandle: source
+      target: '1747822378729'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1747822378729-source-answer-target
+      source: '1747822378729'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1747817496368'
+      position:
+        x: 243
+        y: 247.37902496269004
+      positionAbsolute:
+        x: 243
+        y: 247.37902496269004
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1747822378729.Last_answer#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 302.66017972133955
+        y: 658.8834831011163
+      positionAbsolute:
+        x: 302.66017972133955
+        y: 658.8834831011163
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(data: str) -> dict:\n    last_answer = \"\"\n    \n    #\
+          \ 按行分割数据\n    for line in data.split('\\n'):\n        if line.startswith('data:\
+          \ {'):\n            try:\n                # 解析JSON数据\n                json_data\
+          \ = json.loads(line[6:])  # 去掉\"data: \"前缀\n                if 'answer'\
+          \ in json_data:\n                    last_answer = json_data['answer']\n\
+          \            except json.JSONDecodeError:\n                return {\n  \
+          \                  \"result\": \"未提取到答案\",\n                }\n\n    return\
+          \ {\n        \"Last_answer\": last_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          Last_answer:
+            children: null
+            type: string
+        selected: false
+        title: 提取最后一个answer
+        type: code
+        variables:
+        - value_selector:
+          - '1747819013426'
+          - body
+          variable: data
+      height: 53
+      id: '1747822378729'
+      position:
+        x: 287.25681769310256
+        y: 546.1767488144086
+      positionAbsolute:
+        x: 287.25681769310256
+        y: 546.1767488144086
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-904
+            key: ''
+            type: text
+            value: "{\n\t\"prompt\": [\n\t    {\n\t\t\"type\": \"text\",\n\t\t\"content\"\
+              : {{#sys.query#}}\n\t    }\n\t],\n\t\"session_id\": 2,\n\t\"project_id\"\
+              : 1,\n\t\"thinking_enabled\": false,\n\t\"search_enabled\": false\n}"
+          type: raw-text
+        desc: ''
+        headers: 'Cookie:ctoken=bigfish_ctoken_19if9fe400; OPEN_SPG_TOKEN=9rh2KRIbSE7N
+
+          content-type:application/json'
+        method: POST
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: 请求KAG
+        type: http-request
+        url: https://ktzkcq-fcjkdp-8887.app.cloudstudio.work/v1/chat/completions/
+        variables: []
+      height: 155
+      id: '1747819013426'
+      position:
+        x: 261.94645708138
+        y: 346.77996806885443
+      positionAbsolute:
+        x: 261.94645708138
+        y: 346.77996806885443
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -327.89387559709814
+      y: -278.2810879805652
+      zoom: 1.4126607491047694
