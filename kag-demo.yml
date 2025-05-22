@@ -100,11 +100,11 @@ workflow:
       height: 53
       id: '1747817496368'
       position:
-        x: 243
-        y: 247.37902496269004
+        x: 30
+        y: 277.5
       positionAbsolute:
-        x: 243
-        y: 247.37902496269004
+        x: 30
+        y: 277.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -120,11 +120,11 @@ workflow:
       height: 104
       id: answer
       position:
-        x: 302.66017972133955
-        y: 658.8834831011163
+        x: 942
+        y: 277.5
       positionAbsolute:
-        x: 302.66017972133955
-        y: 658.8834831011163
+        x: 942
+        y: 277.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -156,11 +156,11 @@ workflow:
       height: 53
       id: '1747822378729'
       position:
-        x: 287.25681769310256
-        y: 546.1767488144086
+        x: 638
+        y: 277.5
       positionAbsolute:
-        x: 287.25681769310256
-        y: 546.1767488144086
+        x: 638
+        y: 277.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -202,17 +202,42 @@ workflow:
       height: 155
       id: '1747819013426'
       position:
-        x: 261.94645708138
-        y: 346.77996806885443
+        x: 334
+        y: 277.5
       positionAbsolute:
-        x: 261.94645708138
-        y: 346.77996806885443
+        x: 334
+        y: 277.5
       selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
+    - data:
+        author: root
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"详细教程","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"见
+          https://mp.weixin.qq.com/s/9b7bepfr28F__fH8IsFsRw","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1,"textFormat":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 462
+      height: 88
+      id: '1747824755078'
+      position:
+        x: 27.707649976405886
+        y: 95.30897988070764
+      positionAbsolute:
+        x: 27.707649976405886
+        y: 95.30897988070764
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 462
     viewport:
-      x: -327.89387559709814
-      y: -278.2810879805652
-      zoom: 1.4126607491047694
+      x: 30.720587635888265
+      y: 39.36311211620995
+      zoom: 0.8040888484979244
